@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Array Example</title>
+</head>
+<body>
+    <h1>Object Array Example</h1>
+    <div id="output"></div>
+
+    <script>
+        // Create an array of objects
+        const people = [
+            { name: "Alice", age: 25 },
+            { name: "Bob", age: 30 },
+            { name: "Charlie", age: 35 }
+        ];
+
+        // Display object values using object keys
+        let output = "<h2>Using Object Keys:</h2><ul>";
+        for (let person of people) {
+            output += `<li>Name: ${person.name}, Age: ${person.age}</li>`;
+        }
+        output += "</ul>";
+
+        // Display object values using array indexes
+        output += "<h2>Using Array Indexes:</h2><ul>";
+        for (let i = 0; i < people.length; i++) {
+            output += `<li>Name: ${people[i].name}, Age: ${people[i].age}</li>`;
+        }
+        output += "</ul>";
+
+        // Use join() to create a string from an array of names
+        const namesArray = people.map(person => person.name);
+        const namesJoined = namesArray.join(", ");
+        output += `<h2>Joined Names:</h2><p>${namesJoined}</p>`;
+
+        // Use pop() to remove the last person from the array
+        const removedPerson = people.pop();
+        output += `<h2>Removed Person:</h2><p>Name: ${removedPerson.name}, Age: ${removedPerson.age}</p>`;
+
+        // Display the final array
+        output += "<h2>Final Array:</h2><ul>";
+        for (let person of people) {
+            output += `<li>Name: ${person.name}, Age: ${person.age}</li>`;
+        }
+        output += "</ul>";
+
+        // Output to the HTML
+        document.getElementById("output").innerHTML = output;
+    </script>
+</body>
+</html>

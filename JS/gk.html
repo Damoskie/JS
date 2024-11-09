@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #myElement {
+            color: blue;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the DOM Example!</h1>
+    <div id="myElement">This text will change color.</div>
+    <button id="changeColorBtn">Change Color</button>
+
+    <script>
+        // Function to change the color of the text
+        function changeColor() {
+            const element = document.getElementById('myElement');
+            element.style.color = element.style.color === 'red' ? 'blue' : 'red';
+        }
+
+        // Add event listener to the button
+        const button = document.getElementById('changeColorBtn');
+        button.addEventListener('click', changeColor);
+    </script>
+
+</body>
+</html>

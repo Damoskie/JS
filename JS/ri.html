@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigonometric Values</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Trigonometric Values Calculator</h1>
+    <label for="angle">Enter angle (degrees):</label>
+    <input type="number" id="angle" placeholder="Angle in degrees">
+    <button onclick="calculateTrigValues()">Calculate</button>
+
+    <h2>Results:</h2>
+    <p id="result"></p>
+
+    <script>
+        function calculateTrigValues() {
+            const angleDegrees = parseFloat(document.getElementById('angle').value);
+            if (isNaN(angleDegrees)) {
+                document.getElementById('result').innerText = 'Please enter a valid number.';
+                return;
+            }
+
+            // Convert degrees to radians
+            const angleRadians = angleDegrees * (Math.PI / 180);
+
+            // Calculate trigonometric values
+            const sine = Math.sin(angleRadians);
+            const cosine = Math.cos(angleRadians);
+            const tangent = Math.tan(angleRadians);
+
+            // Display results
+            document.getElementById('result').innerText = `
+                Sine: ${sine.toFixed(4)},
+                Cosine: ${cosine.toFixed(4)},
+                Tangent: ${tangent.toFixed(4)}
+            `;
+        }
+    </script>
+
+</body>
+</html>

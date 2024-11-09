@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Random Numbers and Date</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <script>
+        document.getElementById('generate').addEventListener('click', function() {
+    // Generate a random set of numbers
+    const randomNumbers = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
+    
+    // Get the current date
+    const currentDate = new Date().toLocaleDateString();
+    
+    // Generate a rounded random number
+    const roundedRandomNumber = Math.round(Math.random() * 100);
+
+    // Display the results
+    const output = `
+        <h2>Random Numbers: ${randomNumbers.join(', ')}</h2>
+        <h2>Current Date: ${currentDate}</h2>
+        <h2>Rounded Random Number: ${roundedRandomNumber}</h2>
+    `;
+    document.getElementById('output').innerHTML = output;
+});
+
+    </script>
+    <div class="container">
+        <h1>Random Number Generator</h1>
+        <button id="generate">Generate Random Numbers</button>
+        <div id="output"></div>
+    </div>
+</body>
+</html>
