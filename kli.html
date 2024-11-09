@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="myfunction()">
+        CHECK GREETINGS
+    </button>
+    <p id="knull"> 
+    </p>
+    <script>
+    function myfunction (){
+        var greeting;
+        var time=new Date().getHours()
+        if(time<10){
+            greeting="Good Morning"
+        }
+        else if(time<20){
+            greeting="Good Afternoon"
+        }
+        else{
+            greeting="Good Evening"
+        }
+        document.getElementById("knull").innerHTML="Current hour is "+time+"<br>"+greeting
+    }
+    </script>
+</body>
+</html>
