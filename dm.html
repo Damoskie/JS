@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Numbers with While Loop</title>
+</head>
+<body>
+    <h1>Random Numbers using While Loop</h1>
+
+    <script>
+        // Initialize a counter variable for the loop
+        let counter = 0;
+        let randomNumbers = [];  // Array to store the random numbers
+
+        // We want to print 10 random numbers as an example
+        while (counter < 10) {
+            // Generate a random number between 1 and 100
+            let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+            // Add the random number to the array
+            randomNumbers.push(randomNumber);
+
+            // Increment the counter
+            counter++;
+        }
+
+        // Print the array of random numbers to the console
+        document.body.innerHTML += "<p>Random Numbers: " + randomNumbers.join(", ") + "</p>";
+    </script>
+</body>
+</html>
