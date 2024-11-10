@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Static Method Example</title>
+</head>
+<body>
+
+<h1>Class Properties and Static Methods</h1>
+
+<p id="output"></p>
+
+<script>
+    // Base Class
+class MyClass {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Instance method to display properties
+    displayProperties() {
+        return `Name: ${this.name}, Age: ${this.age}`;
+    }
+
+    // Static method to display properties of any instance of the class
+    static displayStaticProperties(instance) {
+        return `Static Method - Name: ${instance.name}, Age: ${instance.age}`;
+    }
+}
+
+// Subclass that inherits from MyClass
+class SubClass extends MyClass {
+    constructor(name, age, profession) {
+        super(name, age);  // Calling the parent constructor
+        this.profession = profession;
+    }
+
+    // Instance method to display subclass properties
+    displaySubClassProperties() {
+        return `${this.displayProperties()}, Profession: ${this.profession}`;
+    }
+
+    // Static method in subclass
+    static displayStaticSubClassProperties(instance) {
+        return `${MyClass.displayStaticProperties(instance)} (Profession: ${instance.profession})`;
+    }
+}
+
+// Create an instance of the subclass
+const person = new SubClass("John Doe", 30, "Software Developer");
+
+// Use static method of SubClass to access properties and display them
+const outputElement = document.getElementById("output");
+
+// Display output using static method of SubClass
+outputElement.innerHTML = SubClass.displayStaticSubClassProperties(person);
+
+</script>
+</body>
+</html>
