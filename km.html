@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sorting Example</title>
+</head>
+<body>
+    <h1>Array Sorting in Ascending and Descending Order</h1>
+
+    <h2>Original Array:</h2>
+    <p id="originalArray"></p>
+
+    <h2>Mapped Array (Doubled Values):</h2>
+    <p id="mappedArray"></p>
+
+    <h2>Mapped Array in Ascending Order:</h2>
+    <p id="ascendingOrder"></p>
+
+    <h2>Mapped Array in Descending Order:</h2>
+    <p id="descendingOrder"></p>
+
+    <script>
+        // Step 1: Create an array
+        const originalArray = [5, 2, 8, 12, 3, 7];
+
+        // Step 2: Map the array - for example, doubling each element
+        const mappedArray = originalArray.map(num => num * 2);
+
+        // Step 3: Sort the mapped array in ascending and descending order
+        const ascendingArray = [...mappedArray].sort((a, b) => a - b);
+        const descendingArray = [...mappedArray].sort((a, b) => b - a);
+
+        // Step 4: Display the results on the webpage
+        document.getElementById("originalArray").textContent = originalArray;
+        document.getElementById("mappedArray").textContent = mappedArray;
+        document.getElementById("ascendingOrder").textContent = ascendingArray;
+        document.getElementById("descendingOrder").textContent = descendingArray;
+    </script>
+</body>
+</html>
