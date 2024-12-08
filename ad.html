@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income & Expense Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6vZg6jo0l4LuK3DbPS27OD4vHJwwfDgGOSoF6cGvvz3tF2g3k5pboP7qGz" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 30px;
+        }
+        .transaction-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .transaction {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Income & Expense Tracker</h2>
+    
+    <!-- Form to add income or expense -->
+    <form id="transactionForm">
+        <div class="mb-3">
+            <label for="transactionType" class="form-label">Transaction Type</label>
+            <select id="transactionType" class="form-select" required>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" id="amount" class="form-control" placeholder="Enter amount" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" id="description" class="form-control" placeholder="Enter description" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Transaction</button>
+    </form>
+
+    <!-- Balance -->
+    <div class="mt-4">
+        <h4>Balance: <span id="balance">0</span> USD</h4>
+    </div>
+
+    <!-- Transaction List -->
+    <div class="transaction-list">
+        <h5>Transactions</h5>
+        <ul id="transactionList" class="list-group">
+            <!-- List of transactions will appear here -->
+        </ul>
+    </div>
+</div>
+
+<!-- Bootstrap JS & Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybpa2SxvZ/yyMscI3fX1TlbALqV3pLdeB1jhf2SxH/rp3k8ju" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0Bzfxhg5gTkLS3XwiZZgQk3Lfbhp7+CZ0TkF8bLv+7iI1X0K" crossorigin="anonymous"></script>
+
+<!-- JavaScript -->
+<script>
+    let balance = 0;
+    const transactionForm = document.getElementById('transactionForm');
+    const transactionType = document.getElementById('transactionType');
+    const amountInput = document.getElementById('amount');
+    const descriptionInput = document.getElementById('description');
+    const balanceDisplay = document.getElementById('balance');
+    const transactionList = document.getElementById('transactionList');
+
+    // Function to update balance
+    function updateBalance(amount, type) {
+        if (type === 'income') {
+            balance += parseFloat(amount);
+        } else {
+            balance -= parseFloat(amount);
+        }
+        balanceDisplay.textContent = balance.toFixed(2);
+    }
+
+    // Function to display transactions
+    function displayTransaction(amount, description, type) {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+        li.innerHTML = `
+            <span>${description}</span>
+            <span>${type === 'income' ? '+' : '-'} ${amount} USD</span>
+        `;
+        transactionList.appendChild(li);
+    }
+
+    // Handle form submission
+    transactionForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const amount = amountInput.value;
+        const description = descriptionInput.value;
+        const type = transactionType.value;
+
+        if (amount && description) {
+            // Update balance
+            updateBalance(amount, type);
+
+            // Display transaction
+            displayTransaction(amount, description, type);
+
+            // Clear inputs
+            amountInput.value = '';
+            descriptionInput.value = '';
+        }
+    });
+</script>
+
+</body>
+</html>
